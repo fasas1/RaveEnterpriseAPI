@@ -32,7 +32,7 @@ namespace EnterpriseApi.Controllers
              {
                 return NotFound();   
              }
-            return Ok();
+            return Ok(enterprise);
         }
     }
 }
