@@ -18,5 +18,21 @@ namespace EnterpriseApi.Controllers
         {
             return Ok(_db.Enterprises.ToList()); 
         }
+        [HttpGet("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult <EnterpriseDTO> GetEnterprise(int id)
+        {
+            if(id == 0)
+            {
+                return BadRequest();
+            }
+            var enterprise = _db.Enterprises.FirstOrDefault(u => u.Id == id);
+             {
+                return NotFound();   
+             }
+            return Ok();
+        }
     }
 }
